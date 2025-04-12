@@ -1,7 +1,7 @@
 # Face-Detection-Using-Javascript
 
 This project implements real-time face detection and face recognition using JavaScript and the face-api.js library. It runs directly in the browser and uses the user's webcam to detect and identify faces live.
-(You need a live server via Visual Studio code to run the project since it's browser based.)
+(You need a live server via Visual Studio code to run the project since it's browser based. It won't work locally like opening file directly into browser)
 
 Features:-
 Real-time face detection
