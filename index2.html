@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Face Recognition Upload</title>
+  <script defer src="face-api.min.js"></script>
+  <script defer src="script1.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      padding: 30px;
+      background: #1e1e1e;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      max-width: 600px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .upload-btn {
+      display: inline-block;
+      background-color: #007bff;
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .upload-btn:hover {
+      background-color: #0056b3;
+    }
+
+    #imageUpload {
+      display: none;
+    }
+
+    .image-area {
+      position: relative;
+      margin-top: 25px;
+      width: 100%;
+      height: auto;
+      overflow: hidden; /* Prevent images from overflowing */
+    }
+
+    .image-area img {
+      max-width: 100%; /* Ensure image doesn't overflow */
+      height: auto; /* Maintain aspect ratio */
+      border-radius: 8px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .image-area canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 8px;
+      pointer-events: none; /* Ensure canvas does not block interaction with image */
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+
+      .upload-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 1.3rem;
+      }
+
+      p {
+        font-size: 0.8rem;
+      }
+
+      .upload-btn {
+        padding: 8px 15px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Face Recognition</h1>
+    <p>Select an image and we’ll find and label the faces.</p>
+    
+    <label for="imageUpload" class="upload-btn">Upload Image</label>
+    <input type="file" id="imageUpload" accept="image/*" />
+
+    <div id="results" class="image-area"></div>
+  </div>
+</body>
+</html>

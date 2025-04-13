@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition</title>
+    <script defer src="face-api.min.js"></script>
+    <script defer src="script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0b0c10;
+            color: #ffffff;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        header {
+            width: 100%;
+            background-color: #1f2833;
+            padding: 15px 30px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            color: #66fcf1;
+            position: fixed;
+            top: 0;
+            z-index: 10;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 720px;
+            height: auto;
+            max-width: 100%;
+        }
+
+        video, canvas {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .note {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #c5c6c7;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                font-size: 20px;
+                padding: 10px;
+            }
+
+            .note {
+                font-size: 16px;
+                padding: 0 10px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>Face Recognition with Face.AI</header>
+    <main>
+        <div class="video-wrapper">
+            <video id="video" autoplay muted playsinline></video>
+        </div>
+        <p class="note">Make sure your face is clearly visible and well-lit for better accuracy.</p>
+    </main>
+</body>
+</html>
