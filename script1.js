@@ -5,18 +5,22 @@ Promise.all([
     faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
     faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
     faceapi.nets.ssdMobilenetv1.loadFromUri('/models')
-]).then(() => {
-    // Show the "Assets Loaded" message once models are loaded
-    loadedMessage.style.display = 'block';
-    start(); // Start the face recognition process
+]).then(async () => {
+    // Load Labeled Face Descriptors
+    const LabeledFaceDescriptors = await loadLabeledImages();
+
+    if (LabeledFaceDescriptors.length > 0) {
+        console.log('Loaded Labeled Face Descriptors:', LabeledFaceDescriptors);
+        // Show the "Assets Loaded" message once both models and descriptors are loaded
+        loadedMessage.style.display = 'block';
+        start(LabeledFaceDescriptors); // Start the face recognition process
+    } else {
+        console.error("No valid labeled face descriptors found.");
+    }
 });
 
-async function start() {
+async function start(LabeledFaceDescriptors) {
     const resultsContainer = document.getElementById('results'); // Use the predefined image area container
-
-    // Load Labeled Face Descriptors and log them
-    const LabeledFaceDescriptors = await loadLabeledImages();
-    console.log('Loaded Labeled Face Descriptors:', LabeledFaceDescriptors);
 
     // Use a lower threshold to allow more matches (0.4)
     const faceMatcher = new faceapi.FaceMatcher(LabeledFaceDescriptors, 0.4);
