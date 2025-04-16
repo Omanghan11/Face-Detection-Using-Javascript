@@ -71,7 +71,7 @@ async function start() {
     });
 }
 
-function loadLabeledImages() {
+async function loadLabeledImages() {
     const labels = ['abdul', 'aryan', 'ashesh', 'deep', 'dharmik', 'harsh', 'kevin', 'kunj', 'om', 'parth', 'rugved', 'urvesh', 'vasu'];
     return Promise.all(
         labels.map(async label => {
