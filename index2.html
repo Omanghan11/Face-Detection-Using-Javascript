@@ -61,17 +61,19 @@
       display: none;
     }
 
+    /* Image Preview Box */
     .image-area {
       position: relative;
       margin-top: 25px;
       width: 100%;
-      height: auto;
+      height: 300px; /* Set a fixed height for the container */
       overflow: hidden; /* Prevent images from overflowing */
     }
 
     .image-area img {
-      max-width: 100%; /* Ensure image doesn't overflow */
-      height: auto; /* Maintain aspect ratio */
+      width: 100%; /* Make sure image width fits within the container */
+      height: 100%; /* Ensure the image doesn't exceed container height */
+      object-fit: contain; /* This ensures the image scales to fit inside the container */
       border-radius: 8px;
       display: block;
       margin: 0 auto;
@@ -84,6 +86,7 @@
       border-radius: 8px;
       pointer-events: none; /* Ensure canvas does not block interaction with image */
     }
+
 
     /* Responsive Styles */
     @media (max-width: 768px) {
@@ -130,10 +133,12 @@
     <h1>Face Recognition</h1>
     <p>Select an image and we’ll find and label the faces.</p>
     
+    <div id="results" class="image-area"></div> <!-- Image Preview Box -->
+
     <label for="imageUpload" class="upload-btn">Upload Image</label>
     <input type="file" id="imageUpload" accept="image/*" />
+    <div id="loadedMessage" style="display: none; color: #32cd32; margin-top: 10px;">Assets Loaded</div>
 
-    <div id="results" class="image-area"></div>
   </div>
 </body>
 </html>
